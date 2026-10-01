@@ -12,23 +12,23 @@
 
 | Requisito | Descripción corta                                   | Método    | Pruebas                 | Estado    |
 |-----------|-----------------------------------------------------|-----------|-------------------------|-----------|
-| RF-01     | Aceptar conexiones TCP en puerto configurable       | IT        | IT-01, IT-16            | Pendiente |
-| RF-02     | Solicitar apodo al conectarse                       | IT        | IT-01, IT-02            | Pendiente |
-| RF-03     | Rechazar apodos vacíos, repetidos o de más de 20    | UT, IT    | UT-01, UT-02, UT-03, UT-04, IT-02, IT-03 | Pendiente |
-| RF-04     | Máximo 10 clientes simultáneos                      | UT, IT    | UT-05, UT-06, UT-13, IT-04 | Pendiente |
-| RF-05     | Informar "servidor lleno" al cliente 11 y cerrarlo  | UT, IT    | UT-06, IT-05            | Pendiente |
-| RF-06     | Retransmitir mensajes a los demás con el apodo      | UT, IT    | UT-10, IT-06            | Pendiente |
-| RF-07     | Ignorar mensajes vacíos                             | UT, IT    | UT-08, IT-07            | Pendiente |
-| RF-08     | Rechazar mensajes de más de 500 caracteres          | UT, IT    | UT-09, IT-08            | Pendiente |
-| RF-09     | Avisar cuando un usuario entra o sale               | UT, IT    | UT-11, IT-09            | Pendiente |
-| RF-10     | `/salir` cierra la conexión y libera el cupo        | UT, IT    | UT-07, IT-10            | Pendiente |
-| RF-11     | Detectar desconexión inesperada y seguir funcionando| UT, IT    | UT-07, IT-11            | Pendiente |
-| RF-12     | Cliente escribe y recibe al mismo tiempo            | IT        | IT-12                   | Pendiente |
-| RF-13     | Cliente muestra error claro si no hay servidor      | IT        | IT-13                   | Pendiente |
-| RNF-01    | Mensajes en UTF-8, un mensaje por línea             | UT, IT    | UT-12, IT-06            | Pendiente |
-| RNF-02    | Ejecución en Ubuntu (WSL2) con Python 3             | INS       | INS-01                  | Pendiente |
-| RNF-03    | Mensaje entregado en menos de 1 segundo (red local) | IT        | IT-14                   | Pendiente |
-| RNF-04    | El servidor no se cae por datos malformados         | UT, IT    | UT-13, UT-14, IT-15     | Pendiente |
+| RF-01     | Aceptar conexiones TCP en puerto configurable       | IT        | IT-01, IT-16            | Aprobado  |
+| RF-02     | Solicitar apodo al conectarse                       | IT        | IT-01, IT-02            | Aprobado  |
+| RF-03     | Rechazar apodos vacíos, repetidos o de más de 20    | UT, IT    | UT-01, UT-02, UT-03, UT-04, IT-02, IT-03 | Aprobado  |
+| RF-04     | Máximo 10 clientes simultáneos                      | UT, IT    | UT-05, UT-06, UT-13, IT-04 | Aprobado  |
+| RF-05     | Informar "servidor lleno" al cliente 11 y cerrarlo  | UT, IT    | UT-06, IT-05            | Aprobado  |
+| RF-06     | Retransmitir mensajes a los demás con el apodo      | UT, IT    | UT-10, IT-06            | Aprobado  |
+| RF-07     | Ignorar mensajes vacíos                             | UT, IT    | UT-08, IT-07            | Aprobado  |
+| RF-08     | Rechazar mensajes de más de 500 caracteres          | UT, IT    | UT-09, IT-08            | Aprobado  |
+| RF-09     | Avisar cuando un usuario entra o sale               | UT, IT    | UT-11, IT-09            | Aprobado  |
+| RF-10     | `/salir` cierra la conexión y libera el cupo        | UT, IT    | UT-07, IT-10            | Aprobado  |
+| RF-11     | Detectar desconexión inesperada y seguir funcionando| UT, IT    | UT-07, IT-11            | Aprobado  |
+| RF-12     | Cliente escribe y recibe al mismo tiempo            | IT        | IT-12                   | Aprobado  |
+| RF-13     | Cliente muestra error claro si no hay servidor      | IT        | IT-13                   | Aprobado  |
+| RNF-01    | Mensajes en UTF-8, un mensaje por línea             | UT, IT    | UT-12, IT-06            | Aprobado  |
+| RNF-02    | Ejecución en Ubuntu (WSL2) con Python 3             | INS       | INS-01                  | Aprobado  |
+| RNF-03    | Mensaje entregado en menos de 1 segundo (red local) | IT        | IT-14                   | Aprobado  |
+| RNF-04    | El servidor no se cae por datos malformados         | UT, IT    | UT-13, UT-14, IT-15     | Aprobado  |
 
 ## 3. Catálogo de pruebas
 
@@ -82,3 +82,18 @@
 Todos los requisitos RF-01 a RF-13 y RNF-01 a RNF-04 tienen al menos una
 prueba asociada. Si se agrega un requisito nuevo, debe agregarse su fila en
 la matriz y al menos una prueba en el catálogo.S
+## 5. Resultados de la ejecución
+
+- Fecha: 2026-09-30
+- Resultado: **30 pruebas aprobadas** (14 unitarias y 16 de integración), 0 fallos.
+- Estabilidad: la suite completa se ejecutó 5 veces seguidas con el mismo resultado.
+- Comando: `python -m pytest -v`
+
+### Inspección INS-01 (entorno)
+
+```
+$ python3 --version
+Python 3.14.4
+$ uname -a
+Linux HELEN 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
+```
