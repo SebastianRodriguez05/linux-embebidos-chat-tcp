@@ -45,9 +45,11 @@ def run_client(host, port):
     try:
         while True:
             line = input()
+            saliendo = line.strip().lower() == protocol.EXIT_COMMAND
+            if saliendo:
+                leaving.set()  # antes de enviar, para no confundir el cierre con una caída
             sock.sendall(protocol.encode_line(line))
-            if line.strip().lower() == protocol.EXIT_COMMAND:
-                leaving.set()
+            if saliendo:
                 receiver.join(timeout=2)
                 break
     except (EOFError, KeyboardInterrupt):
