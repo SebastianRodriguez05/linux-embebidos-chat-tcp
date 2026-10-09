@@ -96,3 +96,21 @@ y 16 de integración con servidor y clientes reales (`tests/test_integration.py`
 
 ## Autor
 SebastianRodriguez05
+
+## Interfaz gráfica (Go)
+
+Cliente con ventana escrito en Go con la librería Fyne, en la carpeta `gui/`.
+Usa el mismo protocolo de texto que el cliente de consola, así que funciona
+con el servidor en Python sin cambios y puede convivir con otros clientes.
+
+Requisitos (Ubuntu): `sudo apt install -y golang-go gcc libgl1-mesa-dev xorg-dev libwayland-dev wayland-protocols libxkbcommon-dev pkg-config`.
+En WSL2 la ventana se muestra con WSLg.
+
+```bash
+cd gui
+go run .
+```
+
+En la ventana se escribe la IP del servidor, el puerto (5000 por defecto) y
+el apodo. El botón **Salir** cierra la sesión. La primera compilación tarda
+varios minutos.
