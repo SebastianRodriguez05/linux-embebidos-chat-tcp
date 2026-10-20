@@ -102,3 +102,15 @@ chat-tcp/
 ├── tests/       pruebas unitarias y de integración
 └── README.md
 ```
+## 9. Interfaz gráfica (Go)
+
+Cliente adicional escrito en Go con la librería Fyne, en `gui/main.go`. Habla el
+mismo protocolo de texto que `client.py`, por lo que el servidor en Python no
+cambia y ambos tipos de cliente pueden estar en la misma sala.
+
+- **Pantalla de conexión:** IP, puerto y apodo.
+- **Pantalla de chat:** área de mensajes, caja de texto, botón Enviar y botón Salir.
+- **Concurrencia:** una goroutine lee del socket y actualiza la interfaz, mientras
+  la interfaz envía lo que escribe el usuario. El acceso a la conexión se protege
+  con un mutex.
+- **Trazabilidad:** RF-14 a RF-19 y RNF-05 se cubren en `gui/main.go`.

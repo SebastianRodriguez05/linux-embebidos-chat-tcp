@@ -97,3 +97,36 @@ Python 3.14.4
 $ uname -a
 Linux HELEN 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
 ```
+
+## 6. Verificación de la interfaz gráfica
+
+La interfaz en Go se verifica con **pruebas manuales** (MT), no automatizadas.
+Se ejecutan con el servidor de Python en marcha y un cliente de consola
+(`python -m src.client`) como segundo usuario.
+
+### 6.1 Matriz requisito → prueba manual
+
+| Requisito | Descripción corta                                        | Método  | Pruebas        | Estado     |
+|-----------|----------------------------------------------------------|---------|----------------|------------|
+| RF-14     | Ingresar IP, puerto y apodo y conectarse                 | Manual  | MT-01          | Aprobado     |
+| RF-15     | Mostrar mensajes y avisos recibidos                      | Manual  | MT-01, MT-02   | Aprobado     |
+| RF-16     | Enviar con Enter o botón y mostrar el propio mensaje     | Manual  | MT-02          | Aprobado     |
+| RF-17     | Mostrar el motivo del rechazo y volver a la conexión     | Manual  | MT-03          | Aprobado     |
+| RF-18     | Error claro sin servidor y aviso si el servidor se cae   | Manual  | MT-05, MT-06   | Aprobado     |
+| RF-19     | Salir con el botón Salir                                 | Manual  | MT-04          | Aprobado     |
+| RNF-05    | Mismo protocolo, convive con el cliente de consola       | Manual  | MT-01, MT-02   | Aprobado     |
+
+### 6.2 Procedimiento de las pruebas manuales
+
+| ID    | Pasos                                                                                          | Resultado esperado                                                                 |
+|-------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| MT-01 | Abrir la ventana, entrar como `Ana`. Con otro cliente de consola, entrar como `Beto`.         | La ventana pasa al chat y muestra la bienvenida y `* Beto entró al chat`.          |
+| MT-02 | Enviar un mensaje desde la ventana y otro desde el cliente de consola.                         | Cada mensaje aparece en el otro cliente; la ventana muestra también el propio.     |
+| MT-03 | Abrir una segunda ventana e intentar entrar como `Beto` (apodo ya usado).                      | Vuelve a la pantalla de conexión con el aviso `Ese apodo ya está en uso.`          |
+| MT-04 | Pulsar el botón Salir.                                                                         | La ventana vuelve a la conexión y el otro usuario recibe `* Ana salió del chat`.   |
+| MT-05 | Detener el servidor e intentar conectar desde la ventana.                                      | Muestra `No se pudo conectar a IP:puerto...` sin cerrarse.                         |
+| MT-06 | Con la ventana dentro del chat, detener el servidor.                                           | Vuelve a la conexión con `La conexión con el servidor se cerró.`                   |
+
+### 6.3 Alcance
+Estas pruebas no están automatizadas. La lógica del servidor, que sí tiene
+pruebas automáticas (sección 2), no depende de qué cliente se use.

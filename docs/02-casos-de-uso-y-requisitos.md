@@ -84,3 +84,14 @@
 | RNF-02  | El sistema debe ejecutarse en Ubuntu (WSL2) con Python 3.                     |
 | RNF-03  | Un mensaje debe llegar a los demás en menos de 1 segundo en una red local.    |
 | RNF-04  | El servidor no debe caerse por datos malformados enviados por un cliente.     |
+### 3.3 Interfaz gráfica (cliente en Go)
+
+| ID     | Requisito                                                                                          | Origen |
+|--------|----------------------------------------------------------------------------------------------------|--------|
+| RF-14  | La interfaz debe permitir ingresar IP, puerto y apodo, y conectarse al servidor.                   | HU-01  |
+| RF-15  | La interfaz debe mostrar en el área de chat los mensajes y avisos recibidos del servidor.          | HU-03, HU-06 |
+| RF-16  | La interfaz debe permitir enviar mensajes con Enter o con el botón Enviar y mostrar el propio mensaje. | HU-02 |
+| RF-17  | La interfaz debe mostrar el motivo cuando el servidor rechaza al usuario (por ejemplo, apodo en uso) y volver a la pantalla de conexión. | HU-01, HU-05 |
+| RF-18  | La interfaz debe mostrar un error claro si no puede conectarse y avisar si el servidor cierra la conexión. | HU-07 |
+| RF-19  | La interfaz debe permitir salir con el botón Salir, que envía `/salir` al servidor.                | HU-04  |
+| RNF-05 | La interfaz usa el mismo protocolo de texto que el cliente de consola, sin cambios en el servidor, y puede convivir con otros clientes. | -- |
